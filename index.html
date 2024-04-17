@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DCA account login</title>
+	<style>
+		body{
+			font-family: sans-serif;
+		}
+		.chan{
+			color: red;
+		}
+		.name{
+			padding: 20px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.pass{
+			padding: 20px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.submit{
+			cursor: pointer;
+			border-color: red;
+			width: 300px;
+			height: 70px;
+			font-weight: bold;
+			font-size: 30px;
+		}
+		.submit:hover{
+			background-color: pink;
+		}
+		.up{
+			color: darkgreen;
+		}
+		.de{
+			color: brown;
+		}
+	</style>
+	<script>
+		function startFunction(){
+			let name = document.getElementById("name").value;
+
+			if(name == ""){
+				alert("You did'nt even Typed Your Name!")
+				return false;
+			}else if (name == "Ragho"){
+				alert("Name found in DCA database now checking password")
+			}else if(name == "Aditya"){
+				alert("Name found in DCA database now checking password")
+			}else if (name == "Pratik"){
+				alert("Name found in DCA database now checking password")
+			}else if (name == "Sarvesh"){
+				alert("Name found in DCA database now checking password")
+			}else{
+				alert(name + " not found in DCA database")
+				return false;
+			}
+
+			let password = document.getElementById("password").value;
+
+            if(password == ""){
+				alert("You did'nt even Typed Your Password!")
+			}else if (password == "rag"){
+				alert("According to Your name and password There is account in DCA database")
+				alert("Now redirecting you to your chess data")
+			}else if(password == "adrak"){
+				alert("According to Your name and password There is account in DCA database")
+				alert("Now redirecting you to your chess data")
+			}else if (password == "polo"){
+				alert("According to Your name and password There is account in DCA database")
+				alert("Now redirecting you to your chess data")
+			}else if (password == "7304201740a"){
+				alert("According to Your name and password There is account in DCA database")
+				alert("Now redirecting you to your chess data")
+			}else{
+				alert("Incorrect password password did'nt match the DCA account Name")
+			}
+		}
+
+		window.onload = function() {
+        document.oncontextmenu = function() {
+            alert("We cant allow you to inspect and view passwords");
+            return false; // This prevents the default right-click menu from appearing
+        };
+    };
+	</script>
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+		<input type="text" class="name" id="name" placeholder="Type Your DCA account Name">
+		<br>
+		<br>
+		<input type="password" class="pass" id="password" placeholder="Type DCA account password">
+		<br>
+		<br>
+		<input type="submit" class="submit" onclick="startFunction()" value="Enter">
+		<br>
+		<br>
+		<br>
+		<a href="change.html" class="chan">Change Password? Click here</a><br><br>
+		<a href="solution.html">not accessing your DCA account even account detail is right? for solution click here</a><br><br>
+		<a href="update.html" class="up">Updates</a><br><br>
+		<a href="videos.html" class="chan">DCA videos</a><br><br>
+		<a href="match.html" class="up">live ongoing matches </a><br><br>
+		<a href="developer.html" class="de">Website Developers</a><br><br>
+	</center>
+</body>
+</html>
