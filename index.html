@@ -114,6 +114,11 @@
            }
         };
     };
+		Notification.permission().then(perm => {
+			if(perm === "granted") {
+				new Notification("today there is chess match")
+			}
+		})
 	</script>
 </head>
 <body>
