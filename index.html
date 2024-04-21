@@ -114,11 +114,32 @@
            }
         };
     };
-		Notification.permission().then(perm => {
-			if(perm === "granted") {
-				new Notification("today there is chess match")
-			}
-		})
+		// Check if the browser supports notifications
+if ('Notification' in window) {
+  // Request permission for notifications
+  Notification.requestPermission().then(function(permission) {
+    if (permission === 'granted') {
+      // Permission granted, send a notification
+      var notification = new Notification("Chess Match Today", {
+        body: "Don't forget, there's a chess match today!"
+      });
+      
+      // Optionally, you can handle click events on the notification
+      notification.onclick = function() {
+        // Handle click event, for example, redirecting to a page
+        window.location.href = "https://example.com/chess-match-info";
+      };
+      
+      console.log("Notification sent.");
+    } else if (permission === 'denied') {
+      // Permission denied, show an alert
+      alert("You have denied permission for notifications. Please enable notifications in your browser settings to receive push notifications.");
+    }
+  });
+} else {
+  console.log('This browser does not support notifications.');
+}
+
 	</script>
 </head>
 <body>
