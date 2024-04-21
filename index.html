@@ -114,31 +114,43 @@
            }
         };
     };
-		// Check if the browser supports notifications
-if ('Notification' in window) {
-  // Request permission for notifications
+		// Check if the browser supports service workers
+if ('serviceWorker' in navigator) {
+  // Register service worker
+  navigator.serviceWorker.register('service-worker.js')
+    .then(function(registration) {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch(function(error) {
+      console.error('Service Worker registration failed:', error);
+    });
+}
+
+// Check if the browser supports push notifications
+if ('PushManager' in window) {
+  // Request permission for push notifications
   Notification.requestPermission().then(function(permission) {
     if (permission === 'granted') {
-      // Permission granted, send a notification
-      var notification = new Notification("Chess Match Today", {
-        body: "Don't forget, there's a chess match today!"
+      // Permission granted, subscribe to push notifications
+      navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.subscribe({ userVisibleOnly: true })
+          .then(function(subscription) {
+            // Send subscription to your server
+            console.log('Subscription:', subscription);
+          })
+          .catch(function(error) {
+            console.error('Error subscribing to push notifications:', error);
+          });
       });
-      
-      // Optionally, you can handle click events on the notification
-      notification.onclick = function() {
-        // Handle click event, for example, redirecting to a page
-        window.location.href = "https://example.com/chess-match-info";
-      };
-      
-      console.log("Notification sent.");
     } else if (permission === 'denied') {
       // Permission denied, show an alert
       alert("You have denied permission for notifications. Please enable notifications in your browser settings to receive push notifications.");
     }
   });
 } else {
-  console.log('This browser does not support notifications.');
+  console.log('Push notifications are not supported in this browser.');
 }
+
 
 	</script>
 </head>
