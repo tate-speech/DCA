@@ -209,27 +209,35 @@ window.onload = function() {
         preview.innerHTML = `<img src="${uploadedImage}" alt="Uploaded Image">`;
     }
 };
-function noti(){
-alert("Now check your notification to see when match will conducted")
+document.addEventListener("DOMContentLoaded", function() {
+  var music = document.getElementById("homepage-music");
+  var musicToggle = document.getElementById("music-toggle");
 
-Push.create("Hello DCA member", {
-    body: "coming sunday there will be chess match",
-    onClick: function () {
-        window.focus();
-        this.close();
+  musicToggle.addEventListener("change", function() {
+    if (this.checked) {
+      music.play();
+    } else {
+      music.pause();
     }
+  });
 });
-}
 
 	</script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src="push.min.js"></script>
-	<script src="serviceWorker.min.js"></script>
+
 </head>
 <body>
 	<center>
-	<a href="javascript:void(0)" onclick="noti()">click here to see when match will be conducted</a>
-</center><br>
+<audio id="homepage-music" autoplay loop>
+  <source src="monkey.mp3" type="audio/mpeg">
+  Your browser does not support the audio enable from your browser.
+</audio>
+<div class="music-toggle">
+<input type="checkbox" id="music-toggle" name="music-toggle" checked>
+<label for="music-toggle">Music On/Off</label>
+</div>
+</center>
+<br>
+<br>
 	<div class="container">
         <input type="file" id="fileInput" accept="image/*"><br>
 <button class='red' onclick="uploadPhoto()">Set as DCA profile Picture<span></span></button>
